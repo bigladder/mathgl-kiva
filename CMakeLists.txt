@@ -112,7 +112,6 @@ function(mgl_add_lib mgl_tmp_lib)
 			set_target_properties(${mgllib}-static PROPERTIES OUTPUT_NAME "${mgllib}${mgl_lib_static}${mgl_lib_end}")
 	endif(enable-mgl2)
 
-#[[ Kiva customization
 	install(
 			TARGETS ${mgllib} ${mgllib}-static
 			EXPORT MathGLTargets
@@ -120,7 +119,7 @@ function(mgl_add_lib mgl_tmp_lib)
 			ARCHIVE DESTINATION ${MathGL_INSTALL_LIB_DIR}
 			LIBRARY DESTINATION ${MathGL_INSTALL_LIB_DIR}
 	)
-			]]
+
 endfunction(mgl_add_lib mgl_tmp_lib)
 
 MACRO(MGL_DEPENDENT_OPTION option doc default depends1 force1 depends2 force2)
@@ -602,12 +601,12 @@ if(enable-png)
 	if(NOT MGL_HAVE_ZLIB)
 		message(SEND_ERROR "You have to enable ZLib if you plan to use PNG export.")
 	endif(NOT MGL_HAVE_ZLIB)
-#[[ Kiva Customization
+
 	include(FindPNG)
 	if(NOT PNG_FOUND)
 		message(SEND_ERROR "Couldn't find PNG library.")
 	endif(NOT PNG_FOUND)
-]]
+
 	set(MGL_DEP_LIBS ${PNG_LIBRARIES} ${MGL_DEP_LIBS})
 	include_directories(${PNG_INCLUDE_DIR})
 else(enable-png)
