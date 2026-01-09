@@ -54,6 +54,7 @@ endif()
 set(MathGL_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Installation directory for CMake files")
 # Make relative paths absolute (needed later on)
 foreach(p LIB BIN INCLUDE CMAKE)
+    break() # Absolute paths break config fixup for tools: cmake_config.patch
 	set(var MathGL_INSTALL_${p}_DIR)
 	if(NOT IS_ABSOLUTE "${${var}}")
 		set(${var} "${CMAKE_INSTALL_PREFIX}/${${var}}")
